@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<form action=" " method="GET">
+        <input type="text" name="search"  placeholder="Search">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+
+{% for obj in object_list %}
+    <h3 style="text-align: center;color:grey" >{{ obj.city_name }}</h3><br/>
+    <h4 style="text-align: center;color:grey" >{{ obj.created }}</h4><br/>
+{% endfor %}
+
+
+
+<div class="row">
+<style>
+    .column {
+  float: left;
+  width: 50.00%;
+  padding: 5px;
+}
+</style>
+
+{% for city in data %}
+ <div class="column">
+      <div class="card">
+        <div class="card-image">
+          <img src="{% static 'img/'|add:city.city_name|add:'.preview.jpg' %}" height="500" width="700">
+            <span class="card-title">{{city.city_name}}</span>
+        </div>
+        <div class="card-content">
+          <p>Welcome to {{city.city_name}}!</p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'detail' city.id %}">Click here for more details</a>
+        </div>
+      </div>
+  </div>
+{% endfor %}
+
+<!--
+<div class="col s6 m6">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://www.traveller.ee/blog/wp-content/uploads/2019/10/NurembergGermany.jpg" height="500" width="700">
+          <span class="card-title">Nuremberg</span>
+        </div>
+        <div class="card-content">
+          <p>Welcome to Nuremberg!</p>
+        </div>
+        <div class="card-action">
+          <a href="nuremberg_info">Click here for get more information.</a>
+        </div>
+      </div>
+</div>
+
+-->
+
+
+
+{% endblock content %}

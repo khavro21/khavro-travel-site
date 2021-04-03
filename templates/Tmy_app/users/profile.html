@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="jumbotron">
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" width="110" height="120">
+        <div class="media-body">
+          <h2 class="ml-3">{{ user.username|title }}</h2>
+          <p class="ml-3" >{{ user.email }}</p>
+          {% if user_info %}
+            <p class="ml-3">{{ profile.user_info|title }}</p>
+          {% else %}
+            <p class="ml-3"> No information about {{ user.username|title }}.</p>
+           {% endif %}
+        </div>
+      </div>
+      <!-- FORM HERE -->
+    </div>
+</div>
+{% endblock %}
