@@ -23,7 +23,7 @@ class SearchView(TemplateView):
         if search_value:
             context['data'] = City.objects.filter(city_name__icontains=search_value).values('city_name', 'created')
         else:
-            context['data'] = City.objects.all().values('city_name', 'created', 'id')
+            context['data'] = City.objects.all().values('city_name', 'created', 'id', 'image')
         return context
 
 
